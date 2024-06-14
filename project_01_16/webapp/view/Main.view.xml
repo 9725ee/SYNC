@@ -1,0 +1,40 @@
+<mvc:View controllerName="project0116.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+        <content>
+            <!-- <Image src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDRZDmEriO6bMjoFIZTVnxaHG_r2dnnxzQTw&amp;usqp=CAU" width="100px" /> -->
+            <!-- <Text text = "이미지 배포해서 띄우기" /> -->
+            
+            <Table 
+                id="idTable"
+               inset="false"
+               selectionChange="onCategorySelect"
+               items="{/Member}"
+               mode="SingleSelectMaster">
+               <columns>
+                    <Column>
+                        <Text text="image" />
+                    </Column>
+                    <Column>
+                        <Text text="Member ID" />
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem 
+                         type="Active"
+                         vAlign="Middle" 
+                         press="onTableItemPress">
+                        <cells>
+                            <Image src="{
+                                path : 'Memid',
+                                formatter: '.setImageUrl'
+                             }" width="100px" /> 
+                            <Text text="{Memid}" /> 
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </content>
+    </Page>
+</mvc:View>

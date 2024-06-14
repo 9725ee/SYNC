@@ -1,0 +1,47 @@
+<mvc:View controllerName="productionorder.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:unified="sap.ui.unified"
+    >
+    <Page id="page">
+        <customHeader>
+            <Toolbar>
+                <Title text="생산 오더 달력" level="H1" titleStyle="H4" />
+            </Toolbar>
+        </customHeader>
+        <content>
+        	<VBox class="sapUiSmallMargin">
+			<OverflowToolbar height="100%" width="100%"/>
+				
+		<SinglePlanningCalendar
+			id="SPC1"
+			class="sapUiSmallMarginTop"
+			
+			viewChange="handleViewChange"
+			appointmentSelect="handleAppointmentSelect"
+			headerDateSelect="handleHeaderDateSelect"
+			startDateChange="handleStartDateChange"
+			moreLinkPress="handleMoreLinkPress"
+			startDate="{appointmentsModel>/startDate}"
+			appointments="{appointmentsModel>/appointments}">
+			<views>
+				<SinglePlanningCalendarMonthView key="MonthView" title="Month" />
+			</views>
+			<!-- <SinglePlanningCalendarWeekView key="WeekView" title="Week" /> -->
+			<appointments>
+				<unified:CalendarAppointment
+					id="cal"
+                    title="{appointmentsModel>Procode}"
+                    text="{appointmentsModel>text}"
+                    type="{appointmentsModel>type}"
+                    startDate="{appointmentsModel>startDate}"
+                    endDate="{appointmentsModel>endDate}"
+					tooltip="{appointmentsModel>Edddate}">
+                </unified:CalendarAppointment>
+			</appointments>
+		</SinglePlanningCalendar>
+	</VBox>
+	</content>
+    </Page>
+</mvc:View>

@@ -1,0 +1,61 @@
+<mvc:View controllerName="bom.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:t="sap.ui.table">
+    <Page id="page" title="{i18n>title}">
+        <content>
+            <t:Table
+				rows="{/BOMEntitySet}"
+				selectionMode="None"
+				paste="onPaste"
+				ariaLabelledBy="title">
+				<t:extension>
+					<OverflowToolbar style="Clear">
+						<Title id="title" text="BOM 조회"/>
+					</OverflowToolbar>
+				</t:extension>
+				<t:columns>
+                    <t:Column width="14rem">
+						<Label text="이미지" />
+						<t:template>
+							<Image src="{
+                                path : 'Matcode',
+                                formatter: '.setImageUrl'
+                             }" width="200px" />
+						</t:template>
+					</t:Column>
+					<t:Column width="11rem">
+						<Label text="BOMID" />
+						<t:template>
+							<Text text="{Bomid}" wrapping="false" />
+						</t:template>
+					</t:Column>
+					<t:Column width="11rem">
+						<Label text="자재코드" />
+						<t:template>
+							<Text text="{Matcode}" wrapping="false" />
+						</t:template>
+					</t:Column>
+                    <t:Column width="11rem">
+						<Label text="자재명" />
+						<t:template>
+							<Text text="{Matname}" wrapping="false" />
+						</t:template>
+					</t:Column>
+					<t:Column width="11rem">
+						<Label text="제조원가" />
+						<t:template>
+							<Text text="{Currency}" wrapping="false" />
+						</t:template>
+					</t:Column>
+					<t:Column width="11rem">
+						<Label text="통화" />
+						<t:template>
+							<Text text="{Currkey}" wrapping="false" />
+						</t:template>
+					</t:Column>
+				</t:columns>
+			</t:Table>
+        </content>
+    </Page>
+</mvc:View>

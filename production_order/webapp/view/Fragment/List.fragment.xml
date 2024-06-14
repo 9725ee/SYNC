@@ -1,0 +1,39 @@
+<c:FragmentDefinition
+		xmlns="sap.m"
+		xmlns:c="sap.ui.core">
+	<Dialog  id="ListDialog"
+            contentWidth="60%"
+            title="생산오더목록"
+            contentHeight="50%"
+            draggable="false"
+            resizable="false">
+        <content>
+            <Table 
+                id="ListTable"
+                inset="false"
+                items="{/PROEntitySet}"
+                itemPress="onTableItemPress"
+                mode="SingleSelectMaster" >
+                <columns>
+                    <Column>
+                        <Text text="생산오더코드" />
+                    </Column>
+                    </columns>
+                 <items>
+                    <ColumnListItem 
+                        type="Active"
+                        vAlign="Middle">
+                        <cells>
+                            <Text text="{Procode}" />  
+                         </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </content>
+
+        <endButton>
+            <Button text="close" icon="sap-icon://decline" 
+                    press="onClose2" />
+        </endButton>
+   </Dialog>
+</c:FragmentDefinition>

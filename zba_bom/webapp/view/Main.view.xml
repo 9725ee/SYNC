@@ -1,0 +1,78 @@
+<mvc:View
+    controllerName="zbabom.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:t="sap.ui.table"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:svm="sap.ui.comp.smartvariants">
+    <Page id="page" title="완제품 조회">
+        <customHeader>
+            <Bar>
+                <contentMiddle>
+                    <Title text="완제품 조회" titleStyle="H4" class="custom-title" />
+                </contentMiddle>
+            </Bar>
+        </customHeader>
+        <content>
+            <VBox>
+                <layoutData>
+                    <l:GridData span="XL10 L10 M12 S12" />
+                </layoutData>
+                <fb:FilterBar id="filterbar" persistencyKey="myPersKey" useToolbar="false" search=".onSearch" filterChange=".onFilterChange">
+                    <fb:filterGroupItems>
+                        <fb:FilterGroupItem name="Matcode" label="자재코드" groupName="Group1" visibleInFilterBar="true">
+                            <fb:control>
+                                <MultiComboBox
+                                    name="Matname"
+                                    selectionChange=".onSelectionChange"
+                                    items="{
+                                        path: '/BOMEntitySet',
+                                        templateShareable: true
+                                    }"
+                                >
+                                    <core:Item key="{Matcode}" text="{= ${Matcode} + '   ' + ${Matname} }"/>
+                                </MultiComboBox>
+                            </fb:control>
+                        </fb:FilterGroupItem>
+                    </fb:filterGroupItems>
+                </fb:FilterBar>
+                <Panel class="sapUiSmallMarginBottom" width="auto">
+                    <content>
+                        <Table id="HeaderTable" inset="false" items="{/BOMEntitySet}" itemPress="onTableItemPress" mode="SingleSelectMaster">
+                            <columns>
+                                <Column>
+                                    <Text text="이미지" />
+                                </Column>
+                                <Column>
+                                    <Text text="BOMID" />
+                                </Column>
+                                <Column>
+                                    <Text text="자재코드" />
+                                </Column>
+                                <Column>
+                                    <Text text="자재명" />
+                                </Column>
+                                <Column>
+                                    <Text text="제조원가" />
+                                </Column>
+                            </columns>
+                            <items>
+                                <ColumnListItem type="Active" vAlign="Middle" press="onTableItemPress">
+                                    <cells>
+                                        <Image src="{ path: 'Matcode', formatter: '.setImageUrl' }" width="150px" />
+                                        <ObjectIdentifier title="{Bomid}" />
+                                        <Text text="{Matcode}" />
+                                        <ObjectIdentifier title="{Matname}" />
+                                        <ObjectNumber number="{ parts: [{path: 'Currency'}, {path: 'Currkey'}], type: 'sap.ui.model.type.Currency', formatOptions: {showMeasure: false} }" numberUnit="{Currkey}" textAlign="End"/>
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                    </content>
+                </Panel>
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>

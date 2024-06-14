@@ -1,0 +1,232 @@
+<mvc:View controllerName="project0105.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core">
+    <Page id="page" title="{i18n>title}">
+        <Panel headerText="Vertical Layout" expandable="true" expanded="false">
+            <headerToolbar>
+                <Toolbar>
+                    <Title text="Vertical Layout (툴바)" />
+                    <ToolbarSpacer  />
+                    <!--버튼에 아이콘을 어떻게 넣을까-->
+                    <Button text="SAVE" icon="sap-icon://accept"/>
+                </Toolbar>
+            </headerToolbar>
+
+            <!-- sap.ui.layout.VerticalLayout 세로정렬-->
+            <l:VerticalLayout>
+                    <Input value="입력창 입니다." />
+                    <Text text="텍스트입니다." />
+                    <DatePicker />
+                    <Select />
+                    <DateRangeSelection />
+                    <StepInput />
+            </l:VerticalLayout>
+        </Panel>
+
+        <Panel headerText="Horizontal Layout" expandable="true" expanded="false">
+            <!--sap.ui.layout.HorizontalLayout : 가로정렬-->
+            <l:HorizontalLayout>
+                    <Input value="입력창 입니다." />
+                    <Text text="텍스트입니다." />
+                    <DatePicker />
+                    <Select />
+                    <DateRangeSelection />
+                    <StepInput />
+            </l:HorizontalLayout>
+        </Panel>
+       
+        <Panel headerText="Form" expandable="true" expanded="false">
+       <!--sap.ui.layout.form.Form-->
+        <f:Form id="FormChangeColumn_threeGroups234"
+			editable="true">
+			<f:title>
+				<core:Title text="Supplier" />
+			</f:title>
+			<f:layout>
+				<f:ColumnLayout
+					columnsM="2"
+					columnsL="3"
+					columnsXL="4"
+				/>
+			</f:layout>
+			<f:formContainers>
+				<f:FormContainer title="Address">
+					<f:formElements>
+						<f:FormElement label="Name">
+							<f:fields>
+								<Input value="{SupplierName}" id="name1"/>
+							</f:fields>
+						</f:FormElement>
+                        <f:FormElement label="Name">
+							<f:fields>
+								<Input value="{SupplierName}" id="name2"/>
+							</f:fields>
+						</f:FormElement><f:FormElement label="Name">
+							<f:fields>
+								<Input value="{SupplierName}" id="name3"/>
+							</f:fields>
+						</f:FormElement><f:FormElement label="Name">
+							<f:fields>
+								<Input value="{SupplierName}" id="name4"/>
+							</f:fields>
+						</f:FormElement>
+					</f:formElements>
+				</f:FormContainer>
+
+                <f:FormContainer title="Group 2">
+					<f:formElements>
+						<f:FormElement label="Name">
+							<f:fields>
+								<Input value="{SupplierName}" id="name5"/>
+							</f:fields>
+						</f:FormElement>
+                        <f:FormElement label="Name">
+							<f:fields>
+								<Input value="{SupplierName}" id="name6"/>
+							</f:fields>
+						</f:FormElement><f:FormElement label="Name">
+							<f:fields>
+								<Input value="{SupplierName}" id="name7"/>
+							</f:fields>
+						</f:FormElement><f:FormElement label="Name">
+							<f:fields>
+								<Input value="{SupplierName}" id="name8"/>
+							</f:fields>
+						</f:FormElement>
+					</f:formElements>
+				</f:FormContainer>
+			</f:formContainers>
+		</f:Form>
+        </Panel>
+
+        <Panel headerText="Simple Form" expandable="true" expanded="false">
+        <!--SimpleForm 여기다가 붙여넣기-->
+        <f:SimpleForm id="SimpleFormDisplayColumn_threeGroups234"
+			editable="false"
+			layout="ColumnLayout"
+			title="Supplier"
+			columnsM="2"
+			columnsL="3"
+			columnsXL="4"
+			>
+			<f:content>
+				<core:Title text="Address" />
+				<Label text="Name" />
+				<Text text="Text" />
+				<Label text="Street/No." />
+				<Input value="InPut" />
+                <Input value="{HouseNumber}">
+                    <layoutData>
+                        <l:GridData span="XL2 L3 M4 S4" />
+                    </layoutData>
+                </Input>
+				<Label text="ZIP Code/City" />
+				<Text text="{ZIPCode} {City}" />
+				<Label text="Country" />
+				<Text id="countryText" text="{Country}" />
+				<Label text="Web" />
+				<Link text="Url" href="{Url}" />
+				<core:Title text="Contact" />
+				<Label text="Twitter" />
+				<Text text="{Twitter}" />
+				<Label text="Email" />
+				<Text text="{Email}" />
+				<Label text="Tel." />
+				<Text text="{Tel}" />
+				<core:Title text="Other" />
+				<Label text="SMS" />
+				<Text text="{Sms}" />
+				<Label text="Mobile" />
+				<Text text="{Mobile}" />
+				<Label text="Pager" />
+				<Text text="{Pager}" />
+				<Label text="Fax" />
+				<Text text="{Fax}" />
+			</f:content>
+		</f:SimpleForm>
+        </Panel>
+
+        <!-- sap.ui.layout.Grid -->
+        <!-- <l:Grid>
+            <Input value="test1">
+                <layoutData>
+                    <l:GridData span="XL6 L2 M4 S12" />
+                </layoutData>
+            </Input>
+            <Input value="test2">
+                <layoutData>
+                    <l:GridData span="XL6 L6 M4 S12" />
+                </layoutData>
+            </Input>
+            <Input value="test3">
+                <layoutData>
+                    <l:GridData span="XL6 L4 M4 S12" />
+                </layoutData>
+            </Input>
+            <Input value="test4">
+                <layoutData>
+                    <l:GridData span="XL6 L2 M4 S12" />
+                </layoutData>
+            </Input>
+            <Input value="test5">
+                <layoutData>
+                    <l:GridData span="XL6 L2 M4 S6" />
+                </layoutData>
+            </Input>
+            <Input value="test6">
+                <layoutData>
+                    <l:GridData span="XL6 L2 M4 S6" />
+                </layoutData>
+            </Input>
+        </l:Grid> -->
+
+        <Panel headerText="Grid" expandable="true" expanded="false">
+        <l:Grid>
+            <VBox> 
+                <layoutData>
+                    <l:GridData span="XL6 L3 M6 S12" />
+                </layoutData>
+                <Input value="첫번째 VBOX" />
+                <Input value="첫번째 VBOX" />
+                <Input value="첫번째 VBOX" />
+            </VBox>
+            <VBox> 
+                <layoutData>
+                    <l:GridData span="XL6 L9 M6 S12" />
+                </layoutData>
+                <Input value="두번째 VBOX" />
+                <Input value="두번째 VBOX" />
+                <Input value="두번째 VBOX" />
+                <Table id="idProductsTable">
+                <headerToolbar>
+                    <OverflowToolbar>
+                        <content>
+                            <Title text="Products" level="H2"/>
+                            <ToolbarSpacer />
+                        </content>
+                    </OverflowToolbar>
+                </headerToolbar>
+                <columns>
+                    <Column
+                        hAlign="End">
+                        <Text text="Price" />
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem vAlign="Middle">
+                        <cells>
+                            <Text text="{SupplierName}" />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+
+            </VBox>
+        </l:Grid>
+        </Panel>
+
+    </Page>
+</mvc:View>

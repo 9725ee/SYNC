@@ -1,0 +1,43 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+    <Dialog id="prosPopover" contentWidth="60%" title="생산오더상세정보" contentHeight="50%" draggable="false" resizable="false">
+        <content>
+            <f:SimpleForm id="prosSimpleForm">
+                <f:content>
+                    <Label text="생산오더코드" />
+                    <Text text="{Procode}" class="boldText" />
+                    
+                    <Label text="판매계획코드" />
+                    <Text text="{Sapcode}" />
+                    
+                    <Label text="BOM ID" />
+                    <Text text="{Bomid}" />
+                    
+                    <Label text="공장코드" />
+                    <Text text="{Werks}" />
+                    
+                    <Label text="창고코드" />
+                    <Text text="{Whcode}" />
+                    
+                    <Label text="자재명" />
+                    <Text text="{Matname}" />
+                    
+                    <Label text="생산계획수량" />
+                    <Text text="{Proquan} EA" />
+                    
+                    <Label text="생산요청일자" />
+                    <Text text="{path: 'Prqdate', formatter: '.formatDate'}" />
+                    
+                    <Label text="생산시작일" />
+                    <Text text="{path: 'Stdate', formatter: '.formatDate'}" />
+                    
+                    <Label text="생산완료일" />
+                    <Text text="{path: 'Eddate', formatter: '.formatDate'}" />
+                </f:content>
+            </f:SimpleForm>
+        </content>
+        <endButton>
+            <Button text="close" icon="sap-icon://decline" press="onClose3" />
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>
+

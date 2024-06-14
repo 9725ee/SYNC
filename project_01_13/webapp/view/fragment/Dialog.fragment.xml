@@ -1,0 +1,53 @@
+<c:FragmentDefinition xmlns:c="sap.ui.core" xmlns="sap.m" xmlns:t="sap.ui.table">
+    <Dialog  id="idDialog"
+            contentWidth="40%"
+            title="filter"
+            contentHeight="50%"
+            draggable="true"
+            resizable="true">
+        <content>
+		<t:Table
+
+				rows="{popup>/results}"
+				paste="onPaste"
+				ariaLabelledBy="title">
+				<t:columns>
+					<t:Column>
+						<Label text="Product No" />
+						<t:template>
+							<Text text="{popup>Productno}" wrapping="false" />
+						</t:template>
+					</t:Column>
+					<t:Column>
+						<Label text="Product Name" />
+						<t:template>
+							<Text text="{popup>Productname}" wrapping="false" />
+						</t:template>
+					</t:Column>
+					<t:Column>
+						<Label text="First Name" />
+						<t:template>
+							<Text text="{popup>Fname}" wrapping="false" />
+						</t:template>
+					</t:Column>
+					<t:Column>
+						<Label text="Last name" />
+						<t:template>
+							<Text text="{popup>Lname}" wrapping="false" />
+						</t:template>
+					</t:Column>
+					<t:Column>
+						<Label text="Memo" />
+						<t:template>
+							<Text text="{popup>Memo}" wrapping="false" />
+						</t:template>
+					</t:Column>
+				</t:columns>
+			</t:Table>
+        </content>
+        <endButton>
+            <Button text="close" icon="sap-icon://decline" 
+                    press="onClose" />
+        </endButton>
+   </Dialog>
+</c:FragmentDefinition>

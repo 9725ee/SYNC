@@ -1,0 +1,146 @@
+<mvc:View controllerName="project0101.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:layout="sap.ui.layout"
+    xmlns:core="sap.ui.core"
+    xmlns:t="sap.ui.table">
+    
+
+    <Page id="page" title="{i18n>title}">
+            <!-- <Button text="클릭"   />
+            <Button text="조회" type ="Emphasized" /> -->
+       
+	    <content> <!--열린 태그-->
+        <layout:VerticalLayout width="300px">
+			<Title id="idTitle" text="{oJSONModel>subTitle}" />
+			<!--binding="{oJSONModel>/title}"-->
+            <Input id="idInput"  />
+            <Select 
+                id="oSelect" 
+                width="100%" 
+                showSecondaryValues="true"
+                items="{oJSONModel>/list}"
+                 >
+                <core:ListItem 
+                    key="{oJSONModel>key}"
+                    text="{oJSONModel>text}"
+                    additionalText="{oJSONModel>additionalText}"/>
+
+
+
+                <!-- <items > -->
+                <!--  <core:Item key="plus" text="+"  />
+                <core:Item key="minus" text="-"/>
+                <core:Item key="multiple" text="*"/>
+                <core:Item key="divide" text="/"/> -->
+                
+                <!-- <core:ListItem key="plus" text="+" additionalText="plus" />
+                <core:ListItem key="minus" text="-" additionalText="minus"/>
+                <core:ListItem key="multiple" text="*" additionalText="multipl"/>
+                <core:ListItem key="divide" text="/" additionalText="divides"/>
+                </items> -->
+
+               
+                
+            </Select>
+            <Input id="oInput" />
+            <Button id="oButton" width="100%" text="실행" press="oClick" />
+        </layout:VerticalLayout>
+
+        <!-- sap.ui.table.Table -->
+        	<t:Table
+				rows="{local>/history}"
+				selectionMode="MultiToggle"
+				paste="onPaste"
+				ariaLabelledBy="title">
+				<t:columns>
+					<t:Column hAlign="End">
+						<Label width= "100%" textAlign="Center"   text="Number 1" />
+						<t:template>
+							<Text text="{local>num1}" wrapping="false" />
+						</t:template>
+					</t:Column>
+                    <t:Column hAlign="Center">
+						<Label text="Operator" />
+						<t:template>
+							<Text text="{local>oper}" wrapping="false" />
+						</t:template>
+					</t:Column>
+                    <t:Column hAlign="End" >
+						<Label text="Number 2" />
+						<t:template>
+							<Text text="{local>num2}" wrapping="false" />
+						</t:template>
+					</t:Column>
+                    <t:Column hAlign="End" >
+						<Label text="Result" />
+						<t:template>
+							<Text text="{local>result}" wrapping="false" />
+						</t:template>
+					</t:Column>
+                    <t:Column hAlign="Center">
+						<Label text="Status" />
+						<t:template>
+							<core:Icon
+								src="sap-icon://heart"
+								class="size1"
+								color="{
+									path : 'local>result',
+									formatter : '.fnColorFormat'
+								}" 
+								visible="{= ${local>result} > 100 }">
+								<!--
+									color="{= ${local>result} > 100 ? '#1DDB16' : '#FF5E00' }" 
+								-->
+								<!--
+									">" 부등호 입력해도 되는데, 
+									"<" 요건 코드값으로 입력해야함. 코드값 :  &1t;
+									"<" 대신  &1t; 를 입력하면 됩니다 !
+									-->
+								<core:layoutData>
+									<FlexItemData growFactor="1" />
+								</core:layoutData>
+							</core:Icon>
+						</t:template>
+					</t:Column>
+				</t:columns>
+			</t:Table>
+
+        <!-- sap.m.Table -->
+       <Table id="idProductsTable">
+			<headerToolbar>
+				<OverflowToolbar>
+					<content>
+						<Title text="Products" level="H2"/>
+						<ToolbarSpacer />
+					</content>
+				</OverflowToolbar>
+			</headerToolbar>
+			<columns>
+				<Column
+					hAlign="End">
+					<Text text="Price" />
+				</Column>
+			</columns>
+			<items>
+				<ColumnListItem vAlign="Middle">
+					<cells>
+						<Text text="{SupplierName}" />
+					</cells>
+				</ColumnListItem>
+			</items>
+		</Table>
+
+        
+        </content> <!-- 닫힌 태그-->
+
+		<footer>
+            <!-- Bar 타입을 가진 클래스를 적용할 수 있음-->
+            <Toolbar>
+                <ToolbarSpacer />
+                <Button text="보내기" press="onClick" />
+            </Toolbar>
+        </footer>
+
+    </Page>
+</mvc:View>

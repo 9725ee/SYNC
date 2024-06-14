@@ -1,0 +1,46 @@
+<mvc:View controllerName="sap.btp.ux410solving.controller.Detail"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"	
+    xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core"
+    xmlns:uxap="sap.uxap" >
+    	
+         <Page id="page" title="{i18n>title}" showNavButton="true" navButtonPress="onNavBack">
+       
+		<VBox class="sapUiSmallMargin">
+        <f:SimpleForm id="SimpleFormID"
+			editable="true"
+			layout="ResponsiveGridLayout"
+			title="info"
+			labelSpanXL="3"
+			labelSpanL="3"
+			labelSpanM="3"
+			labelSpanS="12"
+			adjustLabelSpan="false"
+			emptySpanXL="4"
+			emptySpanL="4"
+			emptySpanM="4"
+			emptySpanS="0"
+			columnsXL="1"
+			columnsL="1"
+			columnsM="1"
+			singleContainerFullSize="false" >
+			<f:content>
+				<Label text="OrderID" />
+				<Text id="OrderID" text="{OrderID}" />
+				<Label text="ProductID" />
+				<Text id="ProductID" text="{ProductID}" />
+				<Label text="UnitPrice" />
+				<Text id="UnitPrice" text="{UnitPrice}" />
+                <Label text="Quantity" />
+				<Text id="Quantity" text="{Quantity}" />
+                <Label text="Discount" />
+				<Text id="Discount" text="{Discount}" />
+			</f:content>
+		</f:SimpleForm>
+         
+	</VBox>
+     
+	</Page>
+</mvc:View>

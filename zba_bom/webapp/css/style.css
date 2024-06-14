@@ -1,0 +1,11 @@
+/* Enter your custom styles here */
+.bold-title {
+    font-weight: bold;
+}
+.custom-title .sapMPageHeaderTitle {
+    font-weight: bold;
+}
+.left-align {
+    text-align: left !important;
+}
+

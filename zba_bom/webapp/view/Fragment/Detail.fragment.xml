@@ -1,0 +1,52 @@
+<c:FragmentDefinition xmlns:c="sap.ui.core" xmlns="sap.m">
+   <Dialog  id="DetailDialog"
+            contentWidth="40%"
+            title="원자재 조회"
+            contentHeight="50%"
+            draggable="false"
+            resizable="false">
+        <content>
+            <Table 
+                id="ItemTable"
+                inset="false"
+                items="{/BOMItemEntitySet}"
+                mode="SingleSelectMaster" >
+                <columns>
+                    <Column>
+                        <Text text="BOMID" />
+                    </Column>
+                    <Column>
+                        <Text text="자재코드" />
+                    </Column>
+                    <Column>
+                        <Text text="자재명" />
+                    </Column>
+                    <Column>
+                        <Text text="수량" />
+                    </Column>
+                    <Column>
+                        <Text text="단위" />
+                    </Column>
+                    </columns>
+                 <items>
+                    <ColumnListItem 
+                        type="Active"
+                        vAlign="Middle">
+                        <cells>
+                            <Text text="{Bomid}" />
+                            <Text text="{Matcode}" />
+                            <Text text="{Matname}" />
+                            <Text text="{Quant}" />
+                            <Text text="{Unit}" />  
+                         </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </content>
+
+        <endButton>
+            <Button text="close" icon="sap-icon://decline" 
+                    press="onClose" />
+        </endButton>
+   </Dialog>
+</c:FragmentDefinition>

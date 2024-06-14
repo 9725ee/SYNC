@@ -1,0 +1,178 @@
+<mvc:View controllerName="project0111.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:viz="sap.viz.ui5.controls"
+    xmlns:viz.data="sap.viz.ui5.data"
+    xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+    xmlns:cm="sap.suite.ui.commons"
+    xmlns:t="sap.ui.table"
+    xmlns:micro="sap.suite.ui.microchart"
+    >
+    <Page id="page" title="{i18n>title}"> 
+            <cm:ChartContainer 
+                id="chartContainer" 
+                showFullScreen="true" 
+                title="Unit Chart">
+                <cm:content>
+                <!-- 차트 들어가는 부분 -->
+                    <cm:ChartContainerContent 
+                        icon="sap-icon://bar-chart"
+                        title="Chart">
+                        <cm:content>
+                         <viz:VizFrame id="idstackedChart" 
+                                vizType = "stacked_column"
+                                uiConfig="{'applicationSet' ; 'fiori'}"
+                                vizProperties="{
+                                    'title' : {'visible' : true, 'text' : '차트테이블'},'legendGroup' : { 
+                                    'layout' : {'position' : 'left'} 
+                                    },
+                                    'plotArea' : {
+                                        'drawingEffect' : 'glossy',
+                                        'dataLabel' : { 'visible' : true, 'type' : 'value'},
+                                        'colorPalette' : ['#81D4FA', '#FFA726']
+                                    }  
+                                                    }">
+                                    <viz:dataset>
+                                        <viz.data:FlattenedDataset data="{/Products}">
+                                            <!-- X축 -->
+                                            <viz.data:dimensions>
+                                                <viz.data:DimensionDefinition name="Year" value="{ProductName}" /> 
+                                            </viz.data:dimensions>
+
+                                            <!-- Y축 -->
+                                            <viz.data:measures>
+                                                <viz.data:MeasureDefinition name="Stock" value="{UnitsInStock}" />
+                                                <viz.data:MeasureDefinition name="Order" value="{UnitsOnOrder}" />
+                                            </viz.data:measures>
+                                        </viz.data:FlattenedDataset>
+                                    </viz:dataset>
+
+                                    <viz:feeds>
+                                        <viz.feeds:FeedItem	uid="categoryAxis" type="Dimension" values="Year" />
+                                        <viz.feeds:FeedItem	uid="valueAxis" type="Measure" values="Stock,Order" />
+                                    </viz:feeds>
+                                </viz:VizFrame>
+                        </cm:content>
+                    </cm:ChartContainerContent>
+                    <!-- 테이블 들어가는 부분-->
+                    <cm:ChartContainerContent 
+                        icon="sap-icon://table-view"
+                        title="table" >
+                        <cm:content>
+                        <!-- sap.ui.table.Table -->
+                        <t:Table rows="{/Products}">
+                            <t:columns>
+                                <t:Column>
+                                    <Label width= "100%" textAlign="Begin"   text="ProductID" />
+                                    <t:template>
+                                        <Text text = "{ProductID}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column>
+                                    <Label width= "100%" textAlign="Begin"   text="ProductName" />
+                                    <t:template>
+                                        <Text text = "{ProductName}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column>
+                                    <Label width= "100%" textAlign="Begin"   text="SupplierID" />
+                                    <t:template>
+                                        <Text text = "{SupplierID}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column>
+                                    <Label width= "100%" textAlign="Begin"   text="CategoryID" />
+                                    <t:template>
+                                        <Text text = "{CategoryID}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column>
+                                    <Label width= "100%" textAlign="Begin"   text="QuantityPerUnit" />
+                                    <t:template>
+                                        <Text text = "{QuantityPerUnit}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column>
+                                    <Label width= "100%" textAlign="Begin"   text="UnitPrice" />
+                                    <t:template>
+                                        <Text text = "{UnitPrice}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column>
+                                    <Label width= "100%" textAlign="Begin"   text="UnitsInStock" />
+                                    <t:template>
+                                        <!--<Text text = "{UnitsInStock}" />-->
+                                        <micro:RadialMicroChart 
+                                            size="S"
+                                            percentage="{= Number(${UnitsInStock})/100}"
+                                            valueColor="{= ${UnitsInStock}/100 > 0.3 ? 'Good' : 'Error'}"/>
+
+                                    </t:template>
+                                </t:Column>
+                                <t:Column>
+                                    <Label width= "100%" textAlign="Begin"   text="UnitsOnOrder" />
+                                    <t:template>
+                                        <Text text = "{UnitsOnOrder}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column>
+                                    <Label width= "100%" textAlign="Begin"   text="ReorderLevel" />
+                                    <t:template>
+                                        <Text text = "{ReorderLevel}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column>
+                                    <Label width= "100%" textAlign="Begin"   text="Discontinued" />
+                                    <t:template>
+                                        <Text text = "{Discontinued}" />
+                                    </t:template>
+                                </t:Column>
+                            </t:columns>
+                        </t:Table>
+                        </cm:content>
+                    </cm:ChartContainerContent>
+                </cm:content>
+            </cm:ChartContainer>
+
+           
+        </Page>
+    </mvc:View>
+
+            
+            <!-- <viz:VizFrame id="idChart" width="500px" height="300px"
+                vizType = "column"
+                uiConfig="{'applicationSet' ; 'fiori'}"
+                vizProperties="{
+                    'title' : {'visible' : true, 'text' : '차트테이블'},'legendGroup' : { 
+                    'layout' : {'position' : 'left'} 
+                    },
+                    'plotArea' : {
+                        'drawingEffect' : 'glossy',
+                        'dataLabel' : { 'visible' : true, 'type' : 'value'},
+                        'colorPalette' : ['#81D4FA']
+                    }  
+                }">
+            <viz:dataset>
+                    <viz.data:FlattenedDataset data="{chart>/chartDataset}">
+                         // X축 
+                        <viz.data:dimensions>
+                            <viz.data:DimensionDefinition name="년도" value="{chart>year}" /> 
+                        </viz.data:dimensions>
+
+                        // Y축
+                        <viz.data:measures>
+                            <viz.data:MeasureDefinition name="숫자" value="{chart>priceSum}" />
+                        </viz.data:measures>
+                    </viz.data:FlattenedDataset>
+                </viz:dataset>
+
+                <viz:feeds>
+                    // uid에 들어갈 수 있는 값
+                        categoryAxis , valueAxis : line, column, stacked_bar 수치로 표현되서 각각의 아이템들이 나눠져 있는거
+                        color        , size      : pie, donut 컬러,사이즈로 나뉜다고 볼수있음
+                    //
+                    <viz.feeds:FeedItem	uid="categoryAxis" type="Dimension" values="년도" />
+                    <viz.feeds:FeedItem	uid="valueAxis" type="Measure" values="숫자" />
+                </viz:feeds>
+            </viz:VizFrame>  -->
+

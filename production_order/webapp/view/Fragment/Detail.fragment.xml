@@ -1,0 +1,45 @@
+<core:FragmentDefinition
+		xmlns="sap.m"
+		xmlns:f="sap.ui.layout.form"
+		xmlns:core="sap.ui.core">
+	<ResponsivePopover
+			id="detailsPopover"
+			title="생산 오더 정보"
+			class="sapUiResponsivePadding--header"
+			placement="Auto">
+			<!-- title="{appointmentsModel>title}" -->
+		<endButton>
+			<Button text="Close" icon="sap-icon://decline" 
+                    press="onClose"/>
+		</endButton>
+		<f:SimpleForm
+				id="simpleform"
+				editable="false"
+				layout="ResponsiveGridLayout"
+				singleContainerFullSize="false">
+			<Label text="생산오더코드" labelFor="Procode"/>
+			<Text id="Procode" text="{appointmentsModel>Procode}"/>
+			<Label text="판매계획코드" labelFor="Sapcode"/>
+			<Text id="Sapcode" text="{appointmentsModel>Sapcode}"/>
+			<Label text="BOM ID" labelFor="Bomid"/>
+			<Text id="Bomid" text="{appointmentsModel>Bomid}"/>
+			<Label text="공장코드" labelFor="Werks"/>
+			<Text id="Werks" text="{appointmentsModel>Werks}"/>
+			<Label text="창고코드" labelFor="Whcode"/>
+			<Text id="Whcode" text="{appointmentsModel>Whcode}"/>
+			<Label text="자재명" labelFor="Matname"/>
+			<Text id="Matname" text="{appointmentsModel>Matname}"/>
+			<Label text="생산계획수량" labelFor="Matname"/>
+			<Text id="Proquan" text="{appointmentsModel>Proquan} EA"/>
+			<Label text="생산요청일자" labelFor="Prqdate"/>
+			<Text id="Prqdate" 
+				  text="{path: 'appointmentsModel>Prqdate', formatter: '.formatDate'}"/>
+			<Label text="생산시작일" labelFor="Stdate"/>
+			<Text id="Stdate"
+				  text="{path: 'appointmentsModel>Stdate', formatter: '.formatDate'}"/>
+			<Label text="생산완료일" labelFor="Eddate"/>
+			<Text id="Eddate" 
+				  text="{path: 'appointmentsModel>Eddate', formatter: '.formatDate'}"/>
+		</f:SimpleForm>
+	</ResponsivePopover>
+</core:FragmentDefinition>

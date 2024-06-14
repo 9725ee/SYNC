@@ -1,0 +1,54 @@
+<mvc:View controllerName="exam.exprogram01.controller.Detail"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}" showNavButton="true" navButtonPress="onNavBack" >
+        
+        <Table  id ="DetailtableID"
+                    sticky="HeaderToolbar,ColumnHeaders"
+                    inset="false"
+                    items="{
+                        path: '/Order_Details_Extendeds',
+                        sorter : {
+                            path : 'ExtendedPrice'}
+                            }"
+                    class="sapFDynamicPageAlignContent"
+                    width="auto"
+                    headerText="상품의 주문 조회"
+                     >
+                  
+                    <columns>
+						<Column width="12em">
+							<Text text="주문 ID" />
+						</Column>
+						<Column width="12em">
+							<Text text="상품 이름" />
+						</Column>
+						<Column width="12em">
+							<Text text="상품 금액" />
+						</Column>
+                        <Column width="12em">
+							<Text text="수량" />
+						</Column>
+                        <Column width="12em">
+							<Text text="할인율" />
+						</Column>
+                        <Column width="12em">
+							<Text text="총 금액" />
+						</Column>
+					</columns>
+					<items>
+						<ColumnListItem>
+							<cells>
+								<Text text="{OrderID}" />
+								<Text text="{ProductName}" />
+								<Text text="{UnitPrice}" />
+                                <Text text="{Quantity}" />
+                                <Text text="{Discount}" />
+                                <Text text="{ExtendedPrice}" />
+                                <Text text="{Description}" />
+							</cells>
+						</ColumnListItem>
+					</items>
+            </Table>
+    </Page>
+</mvc:View>
